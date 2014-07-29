@@ -57,7 +57,7 @@ void loop(){
 }
 
 void latching(){
-    saveddata = ~(serialData1 << 8| serialData2); //Moved it here. Haven't tested because I'm lazy, we'll see.
+    saveddata = ~(serialData1 << 8| serialData2);
     if(saveddata & 1) WRITE_DATA_HIGH;
     else WRITE_DATA_LOW;
     saveddata = saveddata >> 1;
@@ -66,6 +66,7 @@ void latching(){
 }
 
 void clocking(){ //This is somehow fast enough for a lot of games.
+  //Write the least significant bit to the data line, then shift it.
   if(saveddata & 1) WRITE_DATA_HIGH;
   else WRITE_DATA_LOW;
   saveddata = saveddata >> 1;
