@@ -3,7 +3,7 @@ SNES-Arduino-Controller
 
 Emulates a SNES Controller with an Arduino board, controlled via a python script.
 
-You can play the game with your keyboard (With some input lag) or try to playback a TAS if you know how to get a lagless input file.
+You can play the game with your keyboard (with some input lag) or try to playback a TAS if you know how to get a lagless input file.
 
 TAS Playback script requires pySerial
 
