@@ -25,7 +25,7 @@ print('Ready...')
 def main():
 	amountRead = 0
 	while 1:
-		os.system("title " + ('Frame Counter: ' + str(amountRead) + '/' + str(tasFileSize))) #This is just pretty.
+		#os.system("title " + ('Frame Counter: ' + str(amountRead) + '/' + str(tasFileSize))) #This is just pretty.
 		
 		if (convertToInt(ser.read(size=1)) == 0x12 and amountRead < tasFileSize): #Receives the byte from the Arduino upon latch
 			SNESData1 = ord(tasFile.read(1))
