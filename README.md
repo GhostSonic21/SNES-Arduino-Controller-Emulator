@@ -15,7 +15,7 @@ Windows Extensions: http://sourceforge.net/projects/pywin32/
 
 Keyboard Bindings: WASD for directions, N for SNES Y, M for SNES B, K for SNES A, J for SNES X, Q for SNES L, R for SNES R, ENTER for SNES Start, BACKSPACE for SNES Select.
 
-If you want to try the TAS Playback function, you need an input file with no header, no lag frames included, in a 0000RLXA rlduSsYB format (the four zeros represent buttons non-existant but still technically polled for on a real controller, and have only been demonstrated for use in special TAS'.) 
+If you want to try the TAS Playback function, you need an input file with no header, no lag frames included, in a 0000RLXA rlduSsYB format (the four zeros represent buttons non-existant but still technically polled for on a real controller, and have only been demonstrated in special TAS'.) 
 
 A lua script for the LSNES emulator that does this automatically can be found here: http://tasvideos.org/forum/viewtopic.php?p=327260#327260
 
