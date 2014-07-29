@@ -28,7 +28,7 @@
 /* The following two lines should replace the above two lines if you want to test this on an Uno board. I have no idea if this actually works. If it does, then awesome.
 #define WRITE_DATA_HIGH PORTD |= B00010000
 #define WRITE_DATA_LOW PORTD &= B11101111
-The rest of the code shouldn't doesn't need any changes */
+The rest of the code shouldn't need any changes */
 
 int saveddata = 0xffff;
 byte serialData1 = 0;
