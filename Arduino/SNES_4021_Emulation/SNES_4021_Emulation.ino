@@ -65,12 +65,13 @@ void latching(){
     clocks = 0;
 }
 
-void clocking(){ //This is somehow fast enough for a lot of games.
-  //Write the least significant bit to the data line, then shift it.
-  if(saveddata & 1) WRITE_DATA_HIGH;
+void clocking(){
+  /* This is somehow fast enough for a lot of games.
+   * Write the least significant bit to the data line, then shift it.
+   * Write data low after the end of the 16th cycle, some games hate it when you don't.
+   * That might have something to do with SNES detecting if a controller is plugged in or not. */
+  clocks++;
+  if((saveddata & 1) && clocks < 16) WRITE_DATA_HIGH;
   else WRITE_DATA_LOW;
   saveddata = saveddata >> 1;
-  clocks++;
-  if (clocks > 15) WRITE_DATA_LOW; //Write data low after the end of the 16th cycle, some games hate it when you don't.
-  //That might have something to do with SNES detecting if a controller is plugged in or not.
 }
