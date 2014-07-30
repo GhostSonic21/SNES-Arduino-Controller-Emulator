@@ -15,7 +15,7 @@ root.withdraw()
 tasFilePath = filedialog.askopenfilename(filetypes = [('Lag-Stripped TAS File', '.tas'), ('All files','.*')])
 
 tasFile = open(tasFilePath,'r',encoding='latin-1') #Need to change encoding to latin1, or else python freaks out.
-tasFileSize = int((os.stat(tasFilePath).st_size)/2) #gets the file size, divided by 2 plus 1.
+tasFileSize = int((os.stat(tasFilePath).st_size)/2) #gets the file size, divided by 2 for 2 input per frame.
 
 time.sleep(1)
 ser.write([0x10])
