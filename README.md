@@ -3,6 +3,8 @@ SNES-Arduino-Controller-Emulator
 
 Emulates a SNES Controller with an Arduino board, controlled via a python script.
 
+Basically: Use an Arduino board as a SNES Controller on a real SNES console.
+
 You can play the game with your keyboard (with some input lag) or try to playback a TAS if you know how to get a lagless input file.
 
 TAS Playback script requires pySerial
