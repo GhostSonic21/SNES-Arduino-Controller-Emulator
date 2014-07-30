@@ -1,4 +1,4 @@
-SNES-Arduino-Controller
+SNES-Arduino-Controller-Emulator
 =======================
 
 Emulates a SNES Controller with an Arduino board, controlled via a python script.
