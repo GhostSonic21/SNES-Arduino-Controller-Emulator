@@ -30,7 +30,7 @@
 #define WRITE_DATA_LOW PORTD &= B11101111
 The rest of the code shouldn't need any changes */
 
-int saveddata = 0xffff;
+int saveddata = 0;
 byte serialData1 = 0;
 byte serialData2 = 0;
 byte clocks = 0;
@@ -57,9 +57,9 @@ void loop(){
 }
 
 void latching(){
-    saveddata = ~(serialData1 << 8| serialData2);
-    if(saveddata & 1) WRITE_DATA_HIGH;
-    else WRITE_DATA_LOW;
+    saveddata = (serialData1 << 8| serialData2);
+    if(saveddata & 1) WRITE_DATA_LOW;
+    else WRITE_DATA_HIGH;
     saveddata = saveddata >> 1;
     Serial.write(0x12); //Send a byte to request input data 
     clocks = 0;
@@ -71,7 +71,7 @@ void clocking(){
    * Write data low after the end of the 16th cycle, some games hate it when you don't.
    * That might have something to do with SNES detecting if a controller is plugged in or not. */
   clocks++;
-  if((saveddata & 1) && clocks < 16) WRITE_DATA_HIGH;
-  else WRITE_DATA_LOW;
+  if((saveddata & 1) || clocks > 15) WRITE_DATA_LOW;
+  else WRITE_DATA_HIGH;
   saveddata = saveddata >> 1;
 }
