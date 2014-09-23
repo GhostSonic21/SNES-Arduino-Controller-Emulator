@@ -32,7 +32,7 @@ def main():
 			SNESData2 = ord(tasFile.read(1))
 			ser.write([SNESData1])
 			ser.write([SNESData2])
-			print(SNESData1, SNESData2)
+			print ("%d: %s %s" % (amountRead, hex(SNESData1), hex(SNESData2)))
 			amountRead += 1
 		elif (amountRead >= tasFileSize): #This should prevent an exception at the end of file
 			print('End of File!')
