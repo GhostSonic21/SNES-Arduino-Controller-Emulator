@@ -85,7 +85,7 @@ def main():
 				
 			ser.write([SNESData1])
 			ser.write([SNESData2])
-			print(SNESData1,SNESData2)
+			print("%s %s" % (hex(SNESData1),hex(SNESData2)))
 
 def convertToInt(arrayInput):
 	return int(ord(arrayInput[:1]))
