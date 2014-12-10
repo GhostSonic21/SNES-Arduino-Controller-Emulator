@@ -9,7 +9,7 @@ import time
 import win32api
 import win32con
 
-ser =  serial.Serial("COM4", 115200) #Make sure you change the COM port to whatever it is on your setup.
+ser =  serial.Serial("COM3", 115200) #Make sure you change the COM port to whatever it is on your setup.
 
 time.sleep(2)
 ser.write([0x10])

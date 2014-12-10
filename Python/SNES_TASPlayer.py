@@ -7,14 +7,14 @@ import time
 import os
 from tkinter import filedialog, Tk
 
-ser =  serial.Serial("COM4", 115200) #Make sure you change the COM port to whatever it is on your setup.
+ser =  serial.Serial("COM3", 115200) #Make sure you change the COM port to whatever it is on your setup.
 
 root = Tk()
 root.withdraw()
 
 tasFilePath = filedialog.askopenfilename(filetypes = [('Lag-Stripped TAS File', '.tas'), ('All files','.*')])
 
-tasFile = open(tasFilePath,'r',encoding='latin-1') #Need to change encoding to latin1, or else python freaks out.
+tasFile = open(tasFilePath,'rb')
 tasFileSize = int((os.stat(tasFilePath).st_size)/2) #gets the file size, divided by 2 for 2 input per frame.
 
 time.sleep(1)
@@ -28,11 +28,11 @@ def main():
 		#os.system("title " + ('Frame Counter: ' + str(amountRead) + '/' + str(tasFileSize))) #This is just pretty. But it seems to cause desyncs if it's active, uncomment at your own risk.
 		
 		if (convertToInt(ser.read(size=1)) == 0x12 and amountRead < tasFileSize): #Receives the byte from the Arduino upon latch
-			SNESData1 = ord(tasFile.read(1))
-			SNESData2 = ord(tasFile.read(1))
-			ser.write([SNESData1])
-			ser.write([SNESData2])
-			print ("%d: %s %s" % (amountRead, hex(SNESData1), hex(SNESData2)))
+			SNESData1 = tasFile.read(1)
+			SNESData2 = tasFile.read(1)
+			ser.write(SNESData1)
+			ser.write(SNESData2)
+			print ("%d: %s %s" % (amountRead, hex(int.from_bytes(SNESData1,'little')), hex(int.from_bytes(SNESData2,'little'))))
 			amountRead += 1
 		elif (amountRead >= tasFileSize): #This should prevent an exception at the end of file
 			print('End of File!')
