@@ -27,7 +27,7 @@ def main():
 			time.sleep(2)
 			exit()
 	
-		if (convertToInt(ser.read(size=1)) == 0x12): #Recieves the byte from the arduino upon latch
+		if (ser.inWaiting >= 1 and convertToInt(ser.read(size=1)) == 0x12): #Recieves the byte from the arduino upon latch
 			#Up
 			if win32api.GetAsyncKeyState(ord('W')):
 				SNESData2 = SNESData2 | 0b00010000
